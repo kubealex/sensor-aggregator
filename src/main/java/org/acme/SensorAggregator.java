@@ -1,6 +1,7 @@
 package org.acme;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
 import org.acme.model.SensorData;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
@@ -16,23 +17,20 @@ import io.vertx.core.json.JsonObject;
 @ApplicationScoped
 public class SensorAggregator {
 
-    @ConfigProperty(name = "influxdb.url",defaultValue = "http://localhost:8086")
-    String influxdbURL;
-    @ConfigProperty(name = "influxdb.token")
-    String influxdbToken;
     @ConfigProperty(name = "influxdb.bucket")
     String influxdbBucket;
     @ConfigProperty(name = "influxdb.organization")
     String influxdbOrg;
-
+    @Inject
+    InfluxDBClient influxDBClient;
     @Incoming("test-in")
     public void consume(JsonObject data){
-        InfluxDBClient client = InfluxDBClientFactory.create(influxdbURL, influxdbToken.toCharArray());
 
         Log.info("Received sensor data from controller");
         SensorData sensorData = data.mapTo(SensorData.class);
-        WriteApiBlocking writeApi = client.getWriteApiBlocking();
+        WriteApiBlocking writeApi = influxDBClient.getWriteApiBlocking();
         writeApi.writeMeasurement(influxdbBucket, influxdbOrg, WritePrecision.NS, sensorData);
         Log.info("Sensor data processed and written on InfluxDB");
+        Log.info(influxDBClient);
     }
 }
