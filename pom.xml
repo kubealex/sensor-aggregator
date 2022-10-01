@@ -15,7 +15,6 @@
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
     <quarkus.platform.version>2.13.0.Final</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
-    <influxdbClient.version>2.23</influxdbClient.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -54,9 +53,9 @@
       <artifactId>quarkus-resteasy-reactive</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.influxdb</groupId>
-      <artifactId>influxdb-java</artifactId>
-      <version>${influxdbClient.version}</version>
+        <groupId>com.influxdb</groupId>
+        <artifactId>influxdb-client-java</artifactId>
+        <version>6.6.0</version>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
