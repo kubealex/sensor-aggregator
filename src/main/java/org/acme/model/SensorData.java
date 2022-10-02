@@ -21,11 +21,11 @@ public class SensorData {
     @JsonProperty("sensor_timestamp")
     private Instant timestamp;
     
-    public SensorData(String location, Double temperature, String deviceID) {
+    public SensorData(String location, Double temperature, String deviceID, Instant timestamp) {
         this.location = location;
         this.temperature = temperature;
         this.deviceID = deviceID;
-        this.timestamp = Instant.now();
+        this.timestamp = timestamp;
     }
 
     public String getLocation() {
