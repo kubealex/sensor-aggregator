@@ -12,9 +12,10 @@ import com.influxdb.client.InfluxDBClient;
 import com.influxdb.client.InfluxDBClientFactory;
 import com.influxdb.client.WriteApi;
 import com.influxdb.client.domain.WritePrecision;
+
 @ApplicationScoped
-public class InfluxDBService implements IInfluxDBService{
-    @ConfigProperty(name = "influxdb.url",defaultValue = "http://localhost:8086")
+public class InfluxDBService implements IInfluxDBService {
+    @ConfigProperty(name = "influxdb.url", defaultValue = "http://localhost:8086")
     String influxdbURL;
     @ConfigProperty(name = "influxdb.token")
     String influxdbToken;
@@ -30,8 +31,8 @@ public class InfluxDBService implements IInfluxDBService{
     }
 
     public void writeData(SensorData sensorData) {
-    WriteApi writeApi = influxDBClient.makeWriteApi();
-    writeApi.writeMeasurement(influxdbBucket, influxdbOrg, WritePrecision.NS, sensorData);
-    writeApi.close();
+        WriteApi writeApi = influxDBClient.makeWriteApi();
+        writeApi.writeMeasurement(influxdbBucket, influxdbOrg, WritePrecision.NS, sensorData);
+        writeApi.close();
     }
 }
