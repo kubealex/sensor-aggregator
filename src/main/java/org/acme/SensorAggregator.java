@@ -4,6 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.acme.model.SensorData;
+import org.acme.service.InfluxDBServiceException;
 import org.acme.service.impl.InfluxDBService;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 
@@ -19,7 +20,7 @@ public class SensorAggregator {
      * @param data
      */
     @Incoming("test-in")
-    public void consume(JsonObject data) {
+    public void consume(JsonObject data) throws InfluxDBServiceException{
 
         Log.info("Received sensor data from controller");
         Log.info(data.toString());
