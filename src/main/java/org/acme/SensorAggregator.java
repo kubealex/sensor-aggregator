@@ -19,7 +19,7 @@ public class SensorAggregator {
     /**
      * @param data
      */
-    @Incoming("test-in")
+    @Incoming("samples-queue")
     public void consume(JsonObject data) throws InfluxDBServiceException{
 
         Log.info("Received sensor data from controller");
