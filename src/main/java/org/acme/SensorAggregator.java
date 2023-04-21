@@ -13,8 +13,8 @@ import io.vertx.core.json.JsonObject;
 
 @ApplicationScoped
 public class SensorAggregator {
-    // @Inject
-    // InfluxDBService influxDBService;
+    @Inject
+    InfluxDBService influxDBService;
 
     @Incoming("sensor-data-in")
     public void consume(byte[] data) throws InfluxDBServiceException{
@@ -26,7 +26,7 @@ public class SensorAggregator {
         SensorData sensorData = messageJson.mapTo(SensorData.class);
         Log.info(sensorData);
 
-        // influxDBService.writeData(sensorData);
+        influxDBService.writeData(sensorData);
         Log.info("Sensor data processed and written on InfluxDB");
     }
 }
