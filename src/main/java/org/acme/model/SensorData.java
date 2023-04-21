@@ -3,29 +3,22 @@ package org.acme.model;
 import java.time.Instant;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.influxdb.annotations.Column;
-import com.influxdb.annotations.Measurement;
 
-@Measurement(name = "SensorData")
 public class SensorData {
     @JsonProperty("sensor_location")
-    @Column(tag = true)
-    private String location;
-    @Column
+    protected String location;
     @JsonProperty("sensor_data")
     private Double temperature;
-    @Column(tag = true)
     @JsonProperty("sensor_id")
-    private String deviceID;
-    @Column(timestamp = true)
+    protected String deviceID;
     @JsonProperty("sensor_timestamp")
-    private Instant timestamp;
+    protected Instant timestamp;
 
-    public SensorData(String location, Double temperature, String deviceID, Instant timestamp) {
-        this.location = location;
+ public SensorData(String location, Double temperature, String deviceID) {
         this.temperature = temperature;
+        this.location = location;
         this.deviceID = deviceID;
-        this.timestamp = timestamp;
+        this.timestamp = Instant.now();
     }
 
     public String getLocation() {
