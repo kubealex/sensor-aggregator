@@ -1,11 +1,9 @@
-package org.acme.service.impl;
+package org.acme.service;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 
 import org.acme.model.SensorData;
-import org.acme.service.IInfluxDBService;
-import org.acme.service.InfluxDBServiceException;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import com.influxdb.client.InfluxDBClient;
@@ -15,7 +13,7 @@ import com.influxdb.client.domain.WritePrecision;
 import com.influxdb.exceptions.InfluxException;
 
 @ApplicationScoped
-public class InfluxDBService implements IInfluxDBService {
+public class InfluxDBService {
     @ConfigProperty(name = "influxdb.url", defaultValue = "http://localhost:8086")
     String influxdbURL;
     @ConfigProperty(name = "influxdb.token")

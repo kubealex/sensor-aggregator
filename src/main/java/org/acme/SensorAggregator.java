@@ -4,8 +4,8 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.acme.model.SensorData;
+import org.acme.service.InfluxDBService;
 import org.acme.service.InfluxDBServiceException;
-import org.acme.service.impl.InfluxDBService;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 
 import io.quarkus.logging.Log;

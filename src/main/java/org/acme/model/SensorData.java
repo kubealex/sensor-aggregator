@@ -12,7 +12,10 @@ public class SensorData {
     protected String location;
     @Column
     @JsonProperty("sensor_temperature_data")
-    private Double temperature;
+    protected Double temperature;
+    @Column
+    @JsonProperty("sensor_humidity_data")
+    protected Double humidity;
     @JsonProperty("sensor_id")
     @Column(tag = true)
     protected String deviceID;
@@ -20,34 +23,11 @@ public class SensorData {
     @Column(timestamp = true)
     protected Instant timestamp;
 
- public SensorData(String location, Double temperature, String deviceID) {
+ public SensorData(String location, Double temperature, Double humidity, String deviceID) {
         this.temperature = temperature;
+        this.humidity = humidity;
         this.location = location;
         this.deviceID = deviceID;
         this.timestamp = Instant.now();
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public Double getTemperature() {
-        return temperature;
-    }
-
-    public void setTemperature(Double temperature) {
-        this.temperature = temperature;
-    }
-
-    public String getDeviceID() {
-        return deviceID;
-    }
-
-    public void setDeviceID(String deviceID) {
-        this.deviceID = deviceID;
     }
 }
