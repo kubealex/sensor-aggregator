@@ -26,6 +26,9 @@ public class SensorData {
     @Column
     @JsonProperty("sensor_fixed_temperature")
     protected Integer fixedTemperature;
+    @Column
+    @JsonProperty("sensor_power_consumption")
+    protected Integer powerConsumption;
     @JsonProperty("sensor_id")
     @Column(tag = true)
     protected String deviceID;
@@ -34,7 +37,7 @@ public class SensorData {
     protected Instant timestamp;
 
     public SensorData(String location, Double temperature, Double humidity, String deviceID, Boolean ecoMode,
-            Integer fanSpeed, Integer fixedTemperature) {
+            Integer fanSpeed, Integer fixedTemperature, Integer powerConsumption) {
         this.temperature = temperature;
         this.fixedTemperature = fixedTemperature;
         this.humidity = humidity;
@@ -43,5 +46,6 @@ public class SensorData {
         this.timestamp = Instant.now();
         this.fanSpeed = fanSpeed;
         this.ecoMode = ecoMode;
+        this.powerConsumption = powerConsumption;
     }
 }
