@@ -22,6 +22,9 @@ public class SensorData {
     @Column
     @JsonProperty("sensor_fan_speed")
     protected Integer fanSpeed;
+    @Column
+    @JsonProperty("sensor_fixed_temperature")
+    protected Integer fixedTemperature;
     @JsonProperty("sensor_id")
     @Column(tag = true)
     protected String deviceID;
@@ -29,8 +32,9 @@ public class SensorData {
     @Column(timestamp = true)
     protected Instant timestamp;
 
- public SensorData(String location, Double temperature, Double humidity, String deviceID, Boolean ecoMode, Integer fanSpeed) {
+ public SensorData(String location, Double temperature, Double humidity, String deviceID, Boolean ecoMode, Integer fanSpeed, Integer fixedTemperature) {
         this.temperature = temperature;
+        this.fixedTemperature = fixedTemperature;
         this.humidity = humidity;
         this.location = location;
         this.deviceID = deviceID;
