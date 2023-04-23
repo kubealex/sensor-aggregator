@@ -31,11 +31,11 @@ public class InfluxDBService {
 
     public void writeData(SensorData sensorData) throws InfluxDBServiceException {
         try {
-        WriteApi writeApi = influxDBClient.makeWriteApi();
-        writeApi.writeMeasurement(influxdbBucket, influxdbOrg, WritePrecision.NS, sensorData);
-        writeApi.close();
-    }catch (InfluxException ie) {
-        throw new InfluxDBServiceException("An error occurred while writing to InfluxDB: " + ie.getMessage());
-    }
+            WriteApi writeApi = influxDBClient.makeWriteApi();
+            writeApi.writeMeasurement(influxdbBucket, influxdbOrg, WritePrecision.NS, sensorData);
+            writeApi.close();
+        } catch (InfluxException ie) {
+            throw new InfluxDBServiceException("An error occurred while writing to InfluxDB: " + ie.getMessage());
+        }
     }
 }

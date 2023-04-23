@@ -5,6 +5,7 @@ import java.time.Instant;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.influxdb.annotations.Column;
 import com.influxdb.annotations.Measurement;
+
 @Measurement(name = "SensorData")
 public class SensorData {
     @JsonProperty("sensor_location")
@@ -32,7 +33,8 @@ public class SensorData {
     @Column(timestamp = true)
     protected Instant timestamp;
 
- public SensorData(String location, Double temperature, Double humidity, String deviceID, Boolean ecoMode, Integer fanSpeed, Integer fixedTemperature) {
+    public SensorData(String location, Double temperature, Double humidity, String deviceID, Boolean ecoMode,
+            Integer fanSpeed, Integer fixedTemperature) {
         this.temperature = temperature;
         this.fixedTemperature = fixedTemperature;
         this.humidity = humidity;

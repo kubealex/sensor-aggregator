@@ -17,7 +17,7 @@ public class SensorAggregator {
     InfluxDBService influxDBService;
 
     @Incoming("sensor-data-in")
-    public void consume(byte[] data) throws InfluxDBServiceException{
+    public void consume(byte[] data) throws InfluxDBServiceException {
 
         Log.info("Received sensor data from controller");
         String payload = new String(data);
