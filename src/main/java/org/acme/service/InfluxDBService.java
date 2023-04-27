@@ -1,5 +1,6 @@
 package org.acme.service;
 
+import javax.annotation.Nonnull;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 
@@ -17,6 +18,7 @@ public class InfluxDBService {
     @ConfigProperty(name = "influxdb.url", defaultValue = "http://localhost:8086")
     String influxdbURL;
     @ConfigProperty(name = "influxdb.token")
+    @Nonnull
     String influxdbToken;
     @ConfigProperty(name = "influxdb.bucket")
     String influxdbBucket;
