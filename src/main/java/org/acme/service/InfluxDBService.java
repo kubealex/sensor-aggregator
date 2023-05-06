@@ -1,9 +1,8 @@
 package org.acme.service;
 
 import javax.annotation.Nonnull;
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.annotation.PostConstruct;
 import org.acme.model.SensorData;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
