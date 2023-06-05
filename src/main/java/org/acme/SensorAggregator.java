@@ -2,6 +2,7 @@ package org.acme;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+
 import org.acme.model.SensorData;
 import org.acme.service.InfluxDBService;
 import org.acme.service.InfluxDBServiceException;
