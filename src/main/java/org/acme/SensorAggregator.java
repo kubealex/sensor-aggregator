@@ -18,14 +18,12 @@ public class SensorAggregator {
 
     @Incoming("sensor-data-in")
     public void consume(byte[] data) throws InfluxDBServiceException {
-
         Log.info("Received sensor data from controller");
         String payload = new String(data);
         JsonObject messageJson = new JsonObject(payload);
         Log.info(messageJson);
         SensorData sensorData = messageJson.mapTo(SensorData.class);
         Log.info(sensorData);
-
         influxDBService.writeData(sensorData);
         Log.info("Sensor data processed and written on InfluxDB");
     }
